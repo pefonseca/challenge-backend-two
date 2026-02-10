@@ -5,6 +5,8 @@ import com.pefonseca.pic.repository.WalletTypeRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.Arrays;
+
 @Configuration
 public class DataLoader implements CommandLineRunner {
 
@@ -15,11 +17,8 @@ public class DataLoader implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) {
-        for (WalletType.Enum type : WalletType.Enum.values()) {
-            if (!walletTypeRepository.existsByDescription(type.name().toLowerCase())) {
-                walletTypeRepository.save(type.toEntity());
-            }
-        }
+    public void run(String... args) throws Exception {
+        Arrays.stream(WalletType.Enum.values())
+                .forEach(walletType -> walletTypeRepository.save(walletType.get()));
     }
 }

@@ -38,19 +38,19 @@ public class WalletType {
 
     public enum Enum {
 
-        USER("user"),
-        MERCHANT("merchant");
+        USER(1L, "user"),
+        MERCHANT(2L, "merchant");
 
-        private final String description;
-
-        Enum(String description) {
+        Enum(Long id, String description) {
+            this.id = id;
             this.description = description;
         }
 
-        public WalletType toEntity() {
-            WalletType wt = new WalletType();
-            wt.setDescription(description);
-            return wt;
+        private Long id;
+        private String description;
+
+        public WalletType get() {
+            return new WalletType(id, description);
         }
     }
 
