@@ -1,6 +1,5 @@
 package com.pefonseca.pic.service;
 
-import com.pefonseca.pic.controller.TransferController;
 import com.pefonseca.pic.controller.dto.TransferDTO;
 import com.pefonseca.pic.entity.Transfer;
 import com.pefonseca.pic.entity.Wallet;
